@@ -1,0 +1,46 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.development
+.env.production
+
+# Banco de dados
+*.sqlite
+*.sqlite3
+*.db
+.sequelizerc
+
+# Migrations e Seeders gerados localmente (opcional, remover se quiser versionar)
+# sequelize/migrations/
+# sequelize/seeders/
+
+# Logs
+logs/
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Build / dist
+dist/
+build/
+
+# Cache
+.npm
+.cache/
