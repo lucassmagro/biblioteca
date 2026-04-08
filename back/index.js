@@ -1,38 +1,46 @@
 import Express from "express";
 import banco from "./Banco.js";
-import AlunoController from "./controllers/AlunoController.js";
-import UsuarioController from "./controllers/UsuarioController.js";
+import aluno from "./controllers/AlunoController.js";
+import usuario from "./controllers/UsuarioController.js";
+import obra from "./controllers/ObraController.js";
 
-// teste de conexao
+// testando o banco de dados
 try {
   await banco.authenticate();
-  console.log("Connection has been established successfully.");
+  console.log("Banco conectado com sucesso.");
 } catch (error) {
-  console.error("Unable to connect to the database:", error);
+  console.error("Erro ao conectar com o banco de dados:", error);
 }
 
+//configurando o servidor
 const api = Express();
-api.use(Express.json());
+api.use(Express.json()); // "ensina" o servidor a entender dados no formato JSON
 
 api.get("/teste", (req, res) => {
   res.send("Api funcionando");
 });
 
-api.get("/aluno", AlunoController.listar);
-api.get("/aluno/:matricula", AlunoController.selecionar);
-api.delete("/aluno/:matricula", AlunoController.excluir);
-api.post("/aluno", AlunoController.inserir);
-api.put("/aluno/:matricula", AlunoController.alterar);
+// Rotas: o cárdapio da API
+// Mapeando os verbos HTTP (GET, POST, PUT, DELETE) para as funções que estão lá nos Controllers.
 
-api.get("/usuario", UsuarioController.listar);
-api.get("/usuario/:idusuario", UsuarioController.selecionar);
-api.delete("/usuario/:idusuario", UsuarioController.excluir);
-api.post("/usuario", UsuarioController.inserir);
-api.put("/usuario/:idusuario", UsuarioController.alterar);
+api.get("/aluno", aluno.listar);
+api.get("/aluno/:matricula", aluno.selecionar);
+api.delete("/aluno/:matricula", aluno.excluir);
+api.post("/aluno", aluno.inserir);
+api.put("/aluno/:matricula", aluno.alterar);
+
+api.get("/usuario", usuario.listar);
+api.get("/usuario/:idusuario", usuario.selecionar);
+api.delete("/usuario/:idusuario", usuario.excluir);
+api.post("/usuario", usuario.inserir);
+api.put("/usuario/:idusuario", usuario.alterar);
+
+api.get("/obra", obra.listar);
+api.get("/obra/:idobra", obra.selecionar);
+api.delete("/obra/:idobra", obra.excluir);
+api.post("/obra", obra.inserir);
+api.put("/obra/:idobra", obra.alterar);
 
 api.listen(3000, () => {
-  console.log("Api rodando...");
+  console.log("Api rodando na porta 3000...");
 });
-
-// crud é um conjunto de operacoes basicas que fazemos em uma tabela no banco de dados
-// put serve para atualizar
