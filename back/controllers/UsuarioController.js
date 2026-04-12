@@ -8,13 +8,13 @@ async function listar(req, res) {
 async function selecionar(req, res) {
   const idusuario = req.params.idusuario;
   // o ideal seria validar se é um numero inteiro
-  const dados = await Usuario.findByPk(idusuario); // idusario é a pk
+  const dados = await Usuario.findByPk(idusuario); // idusuario é a pk
   return res.json(dados);
 }
 
 async function excluir(req, res) {
-  const idusario = req.params.idusario;
-  const dados = await Usuario.destroy({ where: { idusario: idusario } });
+  const idusuario = req.params.idusuario;
+  const dados = await Usuario.destroy({ where: { idusuario: idusuario } });
   return res.json(dados);
 }
 
@@ -25,7 +25,7 @@ async function inserir(req, res) {
   const perfil = req.body.perfil;
   const status = req.body.status;
 
-  const dados = await Aluno.create({
+  const dados = await Usuario.create({
     nome: nome,
     matricula: matricula,
     email: email,
@@ -38,7 +38,7 @@ async function inserir(req, res) {
 async function alterar(req, res) {
   // metodo misto
   //route
-  const idusuario = req.params.idusario;
+  const idusuario = req.params.idusuario;
   //body
   const nome = req.body.nome;
   const matricula = req.body.matricula;
@@ -54,7 +54,7 @@ async function alterar(req, res) {
       perfil: perfil,
       status: status,
     },
-    { where: { idusario: idusuario } },
+    { where: { idusuario: idusuario } },
   );
   return res.json(dados);
 }
