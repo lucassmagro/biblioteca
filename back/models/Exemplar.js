@@ -21,7 +21,7 @@ const Exemplar = banco.define(
     status: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0, // se nao enviar o status no insomnia eele salva como 0
+      defaultValue: 0, // se nao enviar o status no insomnia ele salva como 0
     },
   },
   {

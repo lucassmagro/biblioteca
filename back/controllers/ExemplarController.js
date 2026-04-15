@@ -1,4 +1,5 @@
 import Exemplar from "../models/Exemplar.js";
+import Obra from "../models/Obra.js";
 
 // Busca todos os exemplares cadastrados
 async function listar(req, res) {
@@ -27,6 +28,13 @@ async function inserir(req, res) {
   const idobra = req.body.idobra;
   const status = req.body.status; // Opcional no envio, mas pegamos caso venha
 
+  // verificar se a obra não existe
+  const obra = await Obra.findByPk(idobra);
+
+  if (!obra) {
+    return res.status(404).send("Obra não encontrada.");
+  }
+
   const dados = await Exemplar.create({
     idobra: idobra,
     status: status,
@@ -35,19 +43,5 @@ async function inserir(req, res) {
   return res.json(dados);
 }
 
-// Atualiza os dados (geralmente usado para mudar o status de 0 para 1, por exemplo)
-async function alterar(req, res) {
-  const idexemplar = req.params.idexemplar; // ID vem da URL
-
-  const idobra = req.body.idobra; // Novos dados vêm do Body (Insomnia)
-  const status = req.body.status;
-
-  const dados = await Exemplar.update(
-    { idobra: idobra, status: status },
-    { where: { idexemplar: idexemplar } },
-  );
-  return res.json(dados);
-}
-
 // Exporta todas as funções agrupadas
-export default { listar, selecionar, excluir, inserir, alterar };
+export default { listar, selecionar, excluir, inserir };

@@ -47,14 +47,11 @@ api.get("/exemplar", exemplar.listar);
 api.get("/exemplar/:idexemplar", exemplar.selecionar);
 api.delete("/exemplar/:idexemplar", exemplar.excluir);
 api.post("/exemplar", exemplar.inserir);
-api.put("/exemplar/:idexemplar", exemplar.alterar);
 
 // ROTAS DE EMPRÉSTIMO
 api.get("/emprestimo", emprestimo.listar);
 api.get("/emprestimo/:idemprestimo", emprestimo.selecionar);
-api.delete("/emprestimo/:idemprestimo", emprestimo.excluir);
-api.post("/emprestimo", emprestimo.inserir);
-api.put("/emprestimo/:idemprestimo", emprestimo.alterar);
+api.post("/emprestar", emprestimo.emprestar);
 
 // Liga o servidor
 api.listen(3000, () => {
