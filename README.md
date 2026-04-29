@@ -1,88 +1,85 @@
 # Biblioteca
 
-Sistema de gerenciamento de biblioteca desenvolvido como projeto acadêmico para a disciplina de Programacao I, no curso de Sistemas de Informacao.
+Sistema de gerenciamento de biblioteca desenvolvido como projeto acadêmico para a disciplina de Programação I, no curso de Sistemas de Informação. Este projeto é composto por uma API backend (`back`) e uma interface web frontend (`front`).
 
-## Tecnologias utilizadas
+## 🛠️ Tecnologias utilizadas
 
-- Node.js
-- Express 5
-- PostgreSQL
-- Sequelize ORM
+### Backend
+- **Node.js**
+- **Express** 5
+- **PostgreSQL**
+- **Sequelize** ORM
 
-## Estrutura do projeto
+### Frontend
+- **React**
+- **React Router DOM**
+- **React Scripts**
 
-```
+## 📂 Estrutura do projeto
+
+```text
 biblioteca/
-└── back/
-    ├── controllers/
-    │   ├── AlunoController.js
-    │   └── UsuarioController.js
-    ├── models/
-    │   ├── Aluno.js
-    │   ├── Obra.js
-    │   └── Usuario.js
-    ├── Banco.js
-    ├── index.js
-    └── package.json
+├── back/               # API (Backend)
+│   ├── controllers/    # Controladores da API
+│   ├── models/         # Modelos do Sequelize (Banco de Dados)
+│   ├── Banco.js        # Configuração de conexão
+│   └── index.js        # Arquivo principal do servidor
+└── front/              # Interface Web (Frontend)
+    ├── public/         # Arquivos estáticos
+    └── src/            # Código-fonte React
+        ├── componentes/# Componentes da interface
+        └── App.js      # Componente raiz
 ```
 
-## Como executar
+## 🚀 Como executar
 
-### Pre-requisitos
+### Pré-requisitos
+- **Node.js** e **npm** instalados
+- **PostgreSQL** instalado e em execução
 
-- Node.js instalado
-- PostgreSQL instalado e em execucao
+### 1. Backend (API)
 
-### Instalacao
-
-1. Clone o repositorio:
-
-```bash
-git clone https://github.com/lucassmagro/biblioteca.git
-```
-
-2. Acesse a pasta do projeto:
+Acesse a pasta do backend, instale as dependências e inicie o servidor:
 
 ```bash
-cd biblioteca/back
-```
-
-3. Instale as dependencias:
-
-```bash
+cd back
 npm install
-```
-
-4. Configure as variaveis de ambiente criando um arquivo `.env` na raiz com as credenciais do banco de dados.
-
-5. Execute o servidor:
-
-```bash
+# Configure o arquivo .env na raiz do back (se houver) com as credenciais do banco
 node index.js
 ```
+O servidor estará rodando (verifique a porta no console).
 
-## Rotas disponiveis
+### 2. Frontend (Interface Web)
 
-### Aluno
+Em um novo terminal, acesse a pasta do frontend, instale as dependências e inicie a aplicação:
 
-| Metodo | Rota | Descricao |
+```bash
+cd front
+npm install
+npm start
+```
+A aplicação abrirá no seu navegador (geralmente em `http://localhost:3000`).
+
+## 🔗 Rotas da API (Backend)
+
+### 🎓 Aluno
+| Método | Rota | Descrição |
 |--------|------|-----------|
-| GET | /aluno | Lista todos os alunos |
-| GET | /aluno/:matricula | Busca aluno por matricula |
-| POST | /aluno | Cadastra novo aluno |
-| PUT | /aluno/:matricula | Atualiza dados do aluno |
-| DELETE | /aluno/:matricula | Remove aluno |
+| GET | `/aluno` | Lista todos os alunos |
+| GET | `/aluno/:matricula` | Busca aluno por matrícula |
+| POST | `/aluno` | Cadastra novo aluno |
+| PUT | `/aluno/:matricula` | Atualiza dados do aluno |
+| DELETE | `/aluno/:matricula` | Remove aluno |
 
-### Usuario
-
-| Metodo | Rota | Descricao |
+### 👤 Usuário
+| Método | Rota | Descrição |
 |--------|------|-----------|
-| GET | /usuario | Lista todos os usuarios |
-| GET | /usuario/:idusuario | Busca usuario por ID |
-| POST | /usuario | Cadastra novo usuario |
-| PUT | /usuario/:idusuario | Atualiza dados do usuario |
-| DELETE | /usuario/:idusuario | Remove usuario |
+| GET | `/usuario` | Lista todos os usuários |
+| GET | `/usuario/:idusuario` | Busca usuário por ID |
+| POST | `/usuario` | Cadastra novo usuário |
+| PUT | `/usuario/:idusuario` | Atualiza dados do usuário |
+| DELETE | `/usuario/:idusuario` | Remove usuário |
 
-## Autor
+## ✍️ Autor
 
-Lucas Magro
+**Lucas Magro**
