@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<PaginaCatalogo />} />
           <Route path="/usuarios" element={<PaginaUsuarioLista />} />
           <Route path="/usuario" element={<PaginaUsuarioCadastro />} />
+          <Route path="/usuario/:id" element={<PaginaUsuarioCadastro />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,4 +1,5 @@
 import Express from "express";
+import cors from "cors";
 import banco from "./Banco.js";
 import aluno from "./controllers/AlunoController.js";
 import usuario from "./controllers/UsuarioController.js";
@@ -15,6 +16,7 @@ try {
 
 const api = Express();
 api.use(Express.json()); // Permite que a API entenda os JSONs do Insomnia
+api.use(cors());
 
 // Rota de teste
 api.get("/teste", (req, res) => {
@@ -54,6 +56,6 @@ api.get("/emprestimo/:idemprestimo", emprestimo.selecionar);
 api.post("/emprestar", emprestimo.emprestar);
 
 // Liga o servidor
-api.listen(3000, () => {
-  console.log("Api rodando na porta 3000...");
+api.listen(3001, () => {
+  console.log("Api rodando na porta 3001...");
 });
