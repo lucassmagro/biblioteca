@@ -1,9 +1,8 @@
-// configuracao do banco de dados
 import { Sequelize } from "sequelize";
 
-const banco = new Sequelize("banco1", "postgres", "postgres", {
+const banco = new Sequelize("banco1", "postgres", "postgrespw", {
   host: "localhost",
-  port: 5432, // porta padrao
+  port: 5432,
   dialect: "postgres",
   define: {
     timestamps: false,
@@ -11,4 +10,4 @@ const banco = new Sequelize("banco1", "postgres", "postgres", {
   },
 });
 
-export default banco; // a variavel banco é exportada para fora do arquivo
+export default banco;

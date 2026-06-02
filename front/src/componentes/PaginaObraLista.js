@@ -1,12 +1,12 @@
 import { get, del } from "../servicos/api";
 import { useEffect, useState } from "react";
 
-function PaginaUsuarioLista() {
+function PaginaObraLista() {
     const [dados, setDados] = useState([]);
 
     const listar = async () => {
         try {
-            const resposta = await get('usuario');
+            const resposta = await get('obra');
             setDados(resposta);
         } catch (error) {
             alert("Erro ao listar: " + error);
@@ -19,7 +19,7 @@ function PaginaUsuarioLista() {
         }
 
         try {
-            const resposta = await del('usuario/' + id);
+            const resposta = await del('obra/' + id);
             if (resposta === 1) {
                 alert('Excluído com sucesso.');
                 listar();
@@ -40,8 +40,8 @@ function PaginaUsuarioLista() {
         <div className="container my-5">
             <div className="card shadow-sm border-0">
                 <div className="card-header bg-white py-3 d-flex justify-content-between align-items-center">
-                    <h4 className="mb-0 text-primary">Usuários Cadastrados</h4>
-                    <a href="/usuario" className="btn btn-success">
+                    <h4 className="mb-0 text-primary">Obras Cadastradas</h4>
+                    <a href="/obra" className="btn btn-success">
                         <i className="bi bi-plus-circle me-2" />
                         Novo
                     </a>
@@ -51,34 +51,36 @@ function PaginaUsuarioLista() {
                         <thead className="table-light">
                             <tr>
                                 <th className="ps-4">ID</th>
-                                <th>Nome</th>
-                                <th>Matrícula</th>
-                                <th>Email</th>
+                                <th>Foto</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Categoia</th>
                                 <th className="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             {dados.map((d, i) => (
                                 <tr>
-                                    <td className="ps-4">{d.idusuario}</td>
-                                    <td>{d.nome}</td>
+                                    <td className="ps-4">{d.idobra}</td>
+                                    <td><img src={d.foto} className="img-fluid" width={100}></img></td>
+                                    <td>{d.titulo}</td>
                                     <td>
-                                        <code>{d.matricula}</code>
+                                        <code>{d.autor}</code>
                                     </td>
-                                    <td>{d.email}</td>
+                                    <td>{d.categoria}</td>
                                     <td className="text-center">
                                         <div className="btn-group">
                                             <a
-                                                href={'/usuario/' + d.idusuario}
+                                                href={'/obra/' + d.idobra}
                                                 className="btn btn-sm btn-outline-warning"
-                                                title="Editar Usuário"
+                                                title="Editar Obra"
                                             >
                                                 <i className="bi bi-pencil" /> Editar
                                             </a>
                                             <button
                                                 className="btn btn-sm btn-outline-danger"
                                                 title="Excluir"
-                                                onClick={() => excluir(d.idusuario)}
+                                                onClick={() => excluir(d.idobra)}
                                             >
                                                 Excluir
                                             </button>
@@ -97,4 +99,4 @@ function PaginaUsuarioLista() {
     );
 }
 
-export default PaginaUsuarioLista;
+export default PaginaObraLista;
